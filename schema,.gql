@@ -1,0 +1,52 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  username: String!
+  favorites: [String!]
+}
+
+type Episode {
+  name: String
+  air_date: String
+}
+
+type Location {
+  name: String
+  dimension: String
+}
+
+type Character {
+  id: String
+  name: String
+  status: String
+  species: String
+  type: String
+  gender: String
+  origin: Location
+  location: Location
+  image: String
+  episode: [Episode!]
+}
+
+type Characters {
+  results: [Character!]
+}
+
+type Query {
+  users: [User!]!
+  getUser(username: String!): User!
+  characters(page: Float!): Characters!
+  getFavourites(favorites: [String!]!): Characters!
+}
+
+type Mutation {
+  createUser(input: UserDTO!): User!
+  setFavourite(username: String!, id: String!): User!
+}
+
+input UserDTO {
+  username: String!
+  favorites: [String!] = []
+}
